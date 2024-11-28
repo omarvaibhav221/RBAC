@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBAC Website with Admin Portal</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .page {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Role-Based Access Control Website with Admin Portal</h1>
+    
+    <!-- Login Section -->
+    <div id="loginSection">
+        <h2>Please Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter password">
+        <label for="role">Role:</label>
+        <select id="role">
+            <option value="admin">Admin</option>
+            <option value="manager">Manager</option>
+            <option value="user">User</option>
+        </select>
+        <button onclick="login()">Login</button>
+        <p id="loginError" style="color:red; display:none;">Invalid credentials, please try again.</p>
+        <button onclick="showSignupForm()">Create Account</button>
+    </div>
+    
+    <!-- Sign Up Section -->
+    <div id="signupSection" class="hidden">
+        <h2>Create Account</h2>
+        <label for="newUsername">Username:</label>
+        <input type="text" id="newUsername" placeholder="Enter username">
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" placeholder="Enter password">
+        <label for="newRole">Role:</label>
+        <select id="newRole">
+            <option value="admin">Admin</option>
+            <option value="manager">Manager</option>
+            <option value="user">User</option>
+        </select>
+        <button onclick="createAccount()">Create Account</button>
+        <button onclick="cancelSignup()">Cancel</button>
+        <p id="signupError" style="color:red; display:none;">This username already exists, please choose another.</p>
+    </div>
+
+    <!-- Admin Portal -->
+    <div id="adminPortal" class="hidden">
+        <h2>Admin Portal</h2>
+        <h3>Update User Names and Roles</h3>
+        <label for="updateUsername">Username:</label>
+        <input type="text" id="updateUsername" placeholder="Enter username to update">
+        <label for="updateRole">New Role:</label>
+        <select id="updateRole">
+            <option value="admin">Admin</option>
+            <option value="manager">Manager</option>
+            <option value="user">User</option>
+        </select>
+        <button onclick="updateUserRole()">Update Role</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+    
+    <!-- Manager Portal -->
+    <div id="managerPortal" class="hidden">
+        <h2>Manager Portal</h2>
+        <h3>Users Information</h3>
+        <div id="userListManager"></div>
+        <button onclick="logout()">Logout</button>
+    </div>
+    
+    <!-- User Portal -->
+    <div id="userPortal" class="hidden">
+        <h2>User Portal</h2>
+        <h3>Your Information</h3>
+        <div id="userInfo"></div>
+        <input type="text" id="newUserInfo" placeholder="Update your info">
+        <button onclick="updateOwnData()">Update My Data</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
